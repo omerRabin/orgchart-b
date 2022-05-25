@@ -20,7 +20,10 @@ namespace ariel
         Node *first;
         vector<Node *> iter;
         unsigned long i; // index of the current node
-        LevelOrderIterator(){};
+        LevelOrderIterator(){
+            this->first =nullptr;
+            this->i = 0;
+        };
         std::string operator*()
         { 
             return this->iter[i]->jobRank;
@@ -54,7 +57,9 @@ namespace ariel
             Node *first;
             vector<Node *> iter;
             unsigned long i;
-            LevelOrderReversedIterator(){};
+            LevelOrderReversedIterator(){
+                this->first =nullptr;
+            this->i = 0;};
             std::string operator*()
             {
                 return this->iter[i]->jobRank;
@@ -86,7 +91,10 @@ namespace ariel
             Node *first;
             vector<Node *> iter;
             unsigned long i;
-            PreOrderIterator(){};
+            PreOrderIterator(){
+                this->first =nullptr;
+                this->i = 0;
+            };
             std::string operator*()
             {
                 return this->iter[i]->jobRank;
@@ -126,6 +134,10 @@ namespace ariel
     public:
         OrgChart();
         ~OrgChart();
+        OrgChart(const OrgChart& org); // copy constructor
+        OrgChart(OrgChart&& org) = default; // move constructor       
+        OrgChart& operator= (OrgChart && ) = default; // = operator
+        OrgChart& operator= (const OrgChart& OrgChart) = default; // = operator
         OrgChart &add_root(const string &jobRank);
         Node *findNode(Node *node, const string &jobRank);
         OrgChart &add_sub(const string &father,const std::string &son);
