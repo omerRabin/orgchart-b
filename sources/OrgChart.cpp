@@ -18,7 +18,15 @@ namespace ariel
         this->loriEnd = new LevelOrderReversedIterator();
         this->poiEnd = new PreOrderIterator();
     }
-
+    OrgChart::OrgChart(const OrgChart& org){
+        this->root = org.root;
+        this->poiEnd = org.poiEnd ;
+        this->poi = org.poi;
+        this->loriEnd = org.loriEnd;
+        this->lori = org.lori;
+        this->loiEnd = org.loiEnd;
+        this-> loi = org.loi;
+    }
     OrgChart::~OrgChart(){};
 
     void levelOrder(Node *root, vector<Node *> &iter) // got help from https://www.tutorialspoint.com/n-ary-tree-level-order-traversal-in-cplusplus
